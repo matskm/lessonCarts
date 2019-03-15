@@ -37,6 +37,29 @@ baddy = {
   hit = "false"
 }
 
+function isoverlap(ax,ay,bx,by,asiz,bsiz)
+  
+  rtn = "false"
+  
+  --ax >= (bx-8)
+  --ax <= (bd+8)
+  
+  --ay >= (by-8)
+  --ay <= (by+8)
+  
+  --if( () and () and () and () and) then
+    -- stuff
+  --end
+  
+  if( (ax >= (bx-8)) and (ax <= (bd+8)) and (ay >= (by-8)) and (ay <= (by+8)) and) then
+    rtn = "true"
+  end
+  
+
+
+end
+
+
 function update_baddy()
 
   if((bulletone["x"] > baddy["x"]))then
