@@ -2,46 +2,47 @@ pico-8 cartridge // http://www.pico-8.com
 version 16
 __lua__
 --project caleb: aka-fang
+-- global section
 
-cls()
+ cls()
 
-px=60
-py=60
+ px=60
+ py=60
 
-bx=50
-by=50
+ bx=50
+ by=50
 
--- dummy bullet
-dbx=60
-dby=60
+ -- dummy bullet
+ dbx=60
+ dby=60
 
 
-lft_edge=8
-rit_edge=112
-top_edge=8
-bot_edge=112
+ lft_edge=8
+ rit_edge=112
+ top_edge=8
+ bot_edge=112
 
-edge_flag = false
+ edge_flag = false
 
-bulletone = {
-  x = 32,
-  y = 32,
-  direc = "lt",
-  -- lt rt up dn
-  active = false,
-  spd = 1,
-  draw = function(self)
-    circfill(self.x, self.y,1,10)
-    --rectfill(self.x, self.y, (self.x)+3,(self.y)+3,9)
-  end
-}
+ bulletone = {
+   x = 32,
+   y = 32,
+   direc = "lt",
+   -- lt rt up dn
+   active = false,
+   spd = 1,
+   draw = function(self)
+     circfill(self.x, self.y,1,10)
+     --rectfill(self.x, self.y, (self.x)+3,(self.y)+3,9)
+   end
+ }
 
-baddy = {
-  x = 50,
-  y = 50,
-  hit = false,
-  play_death_sound = true
-}
+ baddy = {
+   x = 50,
+   y = 50,
+   hit = false,
+   play_death_sound = true
+ }
 
 
 function isoverlap(ax,ay,bx,by,asiz,bsiz)
@@ -98,8 +99,8 @@ function _draw()
  spr(001,px,py)
  spr(003,bx,by)
 
---dummy bullet draw
-circfill(dbx,dby,1,10)
+ --dummy bullet draw
+ circfill(dbx,dby,1,10)
 
  map(0,0,0,0,16,16)
  
@@ -193,7 +194,6 @@ function process_movement()
  end
 
 end
-
 
 function process_edge()
  if(not btn(1) ) then
