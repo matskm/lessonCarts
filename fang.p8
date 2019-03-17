@@ -59,7 +59,6 @@ function isoverlap(ax,ay,bx,by,asiz,bsiz)
 
 end
 
-
 function update_baddy()
 
   if((bulletone["x"] > baddy["x"]))then
@@ -96,8 +95,6 @@ function _draw()
  print(bulletone["active"],70,90)
 end
 
-
-
 function draw_bullets()
 
  if(bulletone["active"] ==true) then
@@ -105,8 +102,6 @@ function draw_bullets()
  end
 
 end
-
-
 
 function update_bulletone(d)
 
@@ -132,8 +127,6 @@ function update_bulletone(d)
 
 end
 
-
-
 function fire_bulletone(direc)
 
   sfx(6)
@@ -144,13 +137,6 @@ function fire_bulletone(direc)
   bulletone["direc"] = direc
 
 end
-
-
-
-
-
-
-
 
 function process_movement()
 
