@@ -51,7 +51,7 @@ function isoverlap(ax,ay,bx,by,asiz,bsiz)
     -- stuff
   --end
   
-  if( (ax >= (bx-8)) and (ax <= (bd+8)) and (ay >= (by-8)) and (ay <= (by+8)) and) then
+  if( (ax >= (bx-asiz)) and (ax <= (bd+bsiz)) and (ay >= (by-asiz)) and (ay <= (by+bsiz)) ) then
     rtn = "true"
   end
   
