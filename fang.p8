@@ -44,6 +44,9 @@ __lua__
    play_death_sound = true
  }
 
+ p = {
+   dir = "lt"
+ }
 
 function isoverlap(ax,ay,bx,by,asiz,bsiz)
     
@@ -87,6 +90,8 @@ function _update()
  process_edge()
 
  process_movement()
+
+ process_weapon_fire()
 
  update_bulletone(bulletone["direc"])
 
@@ -167,32 +172,33 @@ function process_movement()
 
  if( btn(0) ) then
   px = px-1
-  if(btnp(4)) then
-    fire_bulletone("lt")
-  end
+  p["dir"] = "lt"
  end
  
  if( btn(1) ) then
   px = px+1
-  if(btnp(4)) then
-    fire_bulletone("rt")
-  end
+  p["dir"] = "rt"
  end
  
  if( btn(2) ) then
   py = py-1
-  if(btnp(4)) then
-    fire_bulletone("up")
-  end
+  p["dir"] = "up"
  end
  
  if( btn(3) ) then
   py = py+1
-  if(btnp(4)) then
-    fire_bulletone("dn")
-  end
+  p["dir"] = "dn"
  end
 
+end
+
+function process_weapon_fire()
+  if(btnp(4)) then
+    if(p["dir"] == "lt") fire_bulletone("lt")
+    if(p["dir"] == "rt") fire_bulletone("rt")
+    if(p["dir"] == "up") fire_bulletone("up")
+    if(p["dir"] == "dn") fire_bulletone("dn")
+  end
 end
 
 function process_edge()
