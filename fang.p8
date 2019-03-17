@@ -39,7 +39,8 @@ bulletone = {
 baddy = {
   x = 50,
   y = 50,
-  hit = false
+  hit = false,
+  play_death_sound = true
 }
 
 
@@ -65,17 +66,19 @@ end
 
 function update_baddy()
 
-  if((bulletone["x"] > baddy["x"]))then
-  
-  end
-
   if(isoverlap(bulletone["x"],bulletone["y"],baddy["x"],baddy["y"],3,8) ) then
     baddy["hit"] = true
+    baddy["play_death_sound"]=false
+  else
+    baddy["hit"] = false
   end
 
-  if(baddy["hit"]==true) then
+
+  if(baddy["hit"]==true and baddy["play_death_sound"]==false) then
     sfx(7)
+    baddy["play_death_sound"]=true
   end
+
 end
 
 function _update()
