@@ -12,8 +12,8 @@ bx=50
 by=50
 
 -- dummy bullet
-dbx=49
-dby=49
+dbx=60
+dby=60
 
 
 lft_edge=8
@@ -29,7 +29,7 @@ bulletone = {
   direc = "lt",
   -- lt rt up dn
   active = false,
-  spd = 10,
+  spd = 1,
   draw = function(self)
     circfill(self.x, self.y,1,10)
     --rectfill(self.x, self.y, (self.x)+3,(self.y)+3,9)
@@ -39,8 +39,9 @@ bulletone = {
 baddy = {
   x = 50,
   y = 50,
-  hit = "false"
+  hit = false
 }
+
 
 function isoverlap(ax,ay,bx,by,asiz,bsiz)
     
@@ -68,7 +69,11 @@ function update_baddy()
   
   end
 
-  if(baddy["hit"]=="true") then
+  if(isoverlap(bulletone["x"],bulletone["y"],baddy["x"],baddy["y"],3,8) ) then
+    baddy["hit"] = true
+  end
+
+  if(baddy["hit"]==true) then
     sfx(7)
   end
 end
@@ -103,8 +108,12 @@ end
 function printdebug()
  --print("bullet active:",10,90)
  --print(bulletone["active"],70,90)
- print ("overlap status:",10,90)
- print (isoverlap(dbx-1,dby-1,bx,by,3,8),70,90)
+ 
+ --print ("overlap status:",10,90)
+ --print (isoverlap(dbx-1,dby-1,bx,by,3,8),70,90)
+ 
+ print ("hit baddy:",10,90)
+ print (baddy["hit"],70,90)
 end
 
 function draw_bullets()
