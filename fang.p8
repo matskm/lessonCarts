@@ -12,11 +12,6 @@ __lua__
  bx=50
  by=50
 
- -- dummy bullet
- dbx=60
- dby=60
-
-
  lft_edge=8
  rit_edge=112
  top_edge=8
@@ -50,16 +45,6 @@ __lua__
 
 function isoverlap(ax,ay,bx,by,asiz,bsiz)
     
-  --ax >= (bx-asiz)
-  --ax <= (bx+bsiz)
-  
-  --ay >= (by-asiz)
-  --ay <= (by+bsiz)
-  
-  --if( () and () and () and () and) then
-    -- stuff
-  --end
-  
   if( (ax >= (bx-asiz)) and (ax <= (bx+bsiz)) and (ay >= (by-asiz)) and (ay <= (by+bsiz)) ) then
     return true
   else
@@ -72,15 +57,12 @@ function update_baddy()
 
   if(isoverlap(bulletone["x"],bulletone["y"],baddy["x"],baddy["y"],3,8) ) then
     baddy["hit"] = true
-    baddy["play_death_sound"]=false
   else
     baddy["hit"] = false
   end
 
-
-  if(baddy["hit"]==true and baddy["play_death_sound"]==false) then
+  if(baddy["hit"]==true) then
     sfx(7)
-    baddy["play_death_sound"]=true
   end
 
 end
@@ -103,9 +85,6 @@ function _draw()
  cls() 
  spr(001,px,py)
  spr(003,bx,by)
-
- --dummy bullet draw
- circfill(dbx,dby,1,10)
 
  map(0,0,0,0,16,16)
  
